@@ -117,17 +117,17 @@ export default function Dashboard() {
       {/* Stats Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
         {stats.map((stat) => (
-          <Card key={stat.title} className="shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-              <div className={`h-8 w-8 rounded-full ${stat.bgColor} flex items-center justify-center`}>
-                <stat.icon className={`h-4 w-4 ${stat.color}`} />
+          <Card key={stat.title} className="card-hover shadow-sm border-0 bg-gradient-card">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{stat.title}</CardTitle>
+              <div className={`h-10 w-10 rounded-xl ${stat.bgColor} flex items-center justify-center shadow-xs`}>
+                <stat.icon className={`h-5 w-5 ${stat.color}`} />
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> from last week
+            <CardContent className="pb-4">
+              <div className="text-3xl font-bold mb-1">{stat.value}</div>
+              <p className="text-sm text-muted-foreground">
+                <span className="text-success font-medium">{stat.change}</span> from last week
               </p>
             </CardContent>
           </Card>
@@ -137,13 +137,13 @@ export default function Dashboard() {
       <div className="grid gap-6 lg:grid-cols-3 mb-8">
         {/* Recent Courses */}
         <div className="lg:col-span-2">
-          <Card className="shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between">
+          <Card className="card-hover shadow-md border-0 bg-gradient-card">
+            <CardHeader className="flex flex-row items-center justify-between pb-4">
               <div>
-                <CardTitle>Recent Courses</CardTitle>
-                <CardDescription>Continue where you left off</CardDescription>
+                <CardTitle className="text-xl font-semibold">Recent Courses</CardTitle>
+                <CardDescription className="text-muted-foreground">Continue where you left off</CardDescription>
               </div>
-              <Button asChild size="sm">
+              <Button asChild size="sm" variant="outline" className="border-primary/20 hover:bg-primary/5">
                 <NavLink to="/courses">
                   View All
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -152,27 +152,36 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent className="space-y-4">
               {recentCourses.map((course) => (
-                <div key={course.id} className="flex items-center justify-between p-4 border rounded-lg">
+                <div key={course.id} className="flex items-center justify-between p-5 border-0 bg-background/50 rounded-xl shadow-xs hover:shadow-sm transition-all duration-200">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-medium">{course.name}</h3>
-                      <Badge variant="secondary" className="text-xs">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h3 className="font-semibold text-lg">{course.name}</h3>
+                      <Badge variant="secondary" className={`text-xs px-3 py-1 ${
+                        course.accuracy >= 90 ? 'bg-success-soft text-success' :
+                        course.accuracy >= 80 ? 'bg-info-soft text-info' :
+                        'bg-warning-soft text-warning'
+                      }`}>
                         {course.accuracy}% accuracy
                       </Badge>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                      <span>{course.totalQuizzes} quizzes</span>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                      <span className="font-medium">{course.totalQuizzes} quizzes</span>
                       <span>•</span>
                       <span>Last studied {course.lastStudied}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Progress value={course.progress} className="flex-1" />
-                      <span className="text-sm text-muted-foreground">{course.progress}%</span>
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 bg-secondary/50 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-primary transition-all duration-300 ease-out rounded-full"
+                          style={{ width: `${course.progress}%` }}
+                        />
+                      </div>
+                      <span className="text-sm font-medium text-muted-foreground min-w-[3rem]">{course.progress}%</span>
                     </div>
                   </div>
-                  <Button variant="ghost" size="sm" className="ml-4">
+                  <Button variant="ghost" size="sm" className="ml-6 bg-primary/5 hover:bg-primary/10 text-primary">
                     Continue
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>
               ))}
@@ -183,27 +192,27 @@ export default function Dashboard() {
         {/* Quick Actions & Weak Concepts */}
         <div className="space-y-6">
           {/* Quick Actions */}
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
+          <Card className="card-hover shadow-md border-0 bg-gradient-card">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl font-semibold">Quick Actions</CardTitle>
               <CardDescription>Get started with your learning</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <Button asChild className="w-full bg-gradient-primary">
+            <CardContent className="space-y-4">
+              <Button asChild className="w-full h-12 btn-primary shadow-lg hover:shadow-xl">
                 <NavLink to="/courses/new">
-                  <Plus className="mr-2 h-4 w-4" />
+                  <Plus className="mr-2 h-5 w-5" />
                   Add New Course
                 </NavLink>
               </Button>
-              <Button asChild variant="outline" className="w-full">
+              <Button asChild variant="outline" className="w-full h-12 border-primary/20 hover:bg-primary/5 hover:border-primary/30">
                 <NavLink to="/quiz/create">
-                  <BookOpen className="mr-2 h-4 w-4" />
+                  <BookOpen className="mr-2 h-5 w-5" />
                   Create Quiz
                 </NavLink>
               </Button>
-              <Button asChild variant="outline" className="w-full">
+              <Button asChild variant="outline" className="w-full h-12 border-success/20 hover:bg-success/5 hover:border-success/30 text-success">
                 <NavLink to="/learning">
-                  <Brain className="mr-2 h-4 w-4" />
+                  <Brain className="mr-2 h-5 w-5" />
                   Practice Weak Areas
                 </NavLink>
               </Button>
@@ -211,19 +220,21 @@ export default function Dashboard() {
           </Card>
 
           {/* Concepts to Review */}
-          <Card className="shadow-sm">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-warning" />
+          <Card className="card-hover shadow-md border-0 bg-gradient-card">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-3 text-xl font-semibold">
+                <div className="h-8 w-8 bg-warning-light rounded-lg flex items-center justify-center">
+                  <TrendingUp className="h-4 w-4 text-warning" />
+                </div>
                 Concepts to Review
               </CardTitle>
               <CardDescription>Areas where you can improve</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-3">
               {weakConcepts.map((concept, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-warning-light rounded-md">
-                  <span className="text-sm font-medium">{concept}</span>
-                  <Button variant="ghost" size="sm">
+                <div key={index} className="flex items-center justify-between p-4 bg-warning-soft/30 rounded-xl border border-warning/10 hover:bg-warning-soft/50 transition-colors">
+                  <span className="text-sm font-medium text-foreground">{concept}</span>
+                  <Button variant="ghost" size="sm" className="text-warning hover:bg-warning/10 hover:text-warning">
                     Review
                   </Button>
                 </div>

@@ -26,25 +26,27 @@ export function AppLayout() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
-        <div className="container flex h-16 items-center justify-between">
+      <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60 shadow-sm">
+        <div className="container flex h-18 items-center justify-between py-1">
           <div className="flex items-center space-x-8">
-            <NavLink to="/dashboard" className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
-                <GraduationCap className="h-5 w-5 text-white" />
+            <NavLink to="/dashboard" className="flex items-center space-x-3 group">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary shadow-md group-hover:shadow-lg transition-shadow">
+                <GraduationCap className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold">AI Quiz Coach</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                AI Quiz Coach
+              </span>
             </NavLink>
             
-            <nav className="flex items-center space-x-1">
+            <nav className="flex items-center space-x-2">
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  className={`flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`flex items-center space-x-2 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
-                      ? "bg-accent text-accent-foreground"
-                      : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
+                      ? "bg-primary/10 text-primary shadow-sm border border-primary/20"
+                      : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
                   }`}
                 >
                   <item.icon className="h-4 w-4" />

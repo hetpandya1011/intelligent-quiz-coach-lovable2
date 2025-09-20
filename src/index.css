@@ -2,71 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* AI Quiz Coach Design System - Educational Platform
-All colors MUST be HSL for consistent theming.
+/* AI Quiz Coach Design System - Modern Educational Platform
+Soft, approachable colors with professional polish. All colors MUST be HSL.
+Inspired by modern educational platforms like Duolingo, Notion, Coursera.
 */
 
 @layer base {
   :root {
-    /* Base colors - Clean and modern */
-    --background: 0 0% 100%;
-    --foreground: 220 13% 18%;
+    /* Base colors - Pure and breathable */
+    --background: 0 0% 99%;
+    --foreground: 215 25% 27%;
 
-    /* Card system - Elevated and clean */
+    /* Card system - Elevated with subtle warmth */
     --card: 0 0% 100%;
-    --card-foreground: 220 13% 18%;
+    --card-foreground: 215 25% 27%;
 
     /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 18%;
+    --popover-foreground: 215 25% 27%;
 
-    /* Educational primary - Trustworthy blue */
-    --primary: 217 91% 60%;
+    /* Educational primary - Calming trustworthy blue */
+    --primary: 214 84% 56%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 217 91% 95%;
-    --primary-dark: 217 91% 45%;
+    --primary-light: 214 100% 97%;
+    --primary-dark: 214 84% 46%;
+    --primary-soft: 214 84% 94%;
 
-    /* Success system - Learning progress */
-    --success: 142 76% 36%;
+    /* Success system - Encouraging green progress */
+    --success: 143 64% 24%;
     --success-foreground: 0 0% 100%;
-    --success-light: 142 76% 95%;
+    --success-light: 143 76% 95%;
+    --success-soft: 143 64% 91%;
     
-    /* Warning system - Attention and engagement */
-    --warning: 38 92% 50%;
+    /* Warning system - Gentle attention amber */
+    --warning: 32 95% 44%;
     --warning-foreground: 0 0% 100%;
-    --warning-light: 38 92% 95%;
+    --warning-light: 32 100% 96%;
+    --warning-soft: 32 95% 92%;
 
-    /* Secondary system - Subtle backgrounds */
-    --secondary: 220 13% 96%;
-    --secondary-foreground: 220 13% 18%;
+    /* Info system - Soft helpful blue */
+    --info: 200 95% 40%;
+    --info-foreground: 0 0% 100%;
+    --info-light: 200 100% 96%;
+    --info-soft: 200 95% 92%;
 
-    /* Muted system - Supporting content */
-    --muted: 220 13% 96%;
-    --muted-foreground: 220 9% 46%;
+    /* Secondary system - Neutral supportive */
+    --secondary: 215 20% 95%;
+    --secondary-foreground: 215 25% 27%;
 
-    /* Accent system - Interactive elements */
-    --accent: 217 91% 95%;
-    --accent-foreground: 217 91% 60%;
+    /* Muted system - Subtle hierarchy */
+    --muted: 215 20% 95%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Destructive system */
-    --destructive: 0 84% 60%;
+    /* Accent system - Interactive subtle */
+    --accent: 214 100% 97%;
+    --accent-foreground: 214 84% 56%;
+
+    /* Destructive system - Gentle but clear */
+    --destructive: 0 65% 51%;
     --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 100% 97%;
 
-    /* Border system - Clean separation */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
+    /* Border system - Soft separation */
+    --border: 215 20% 89%;
+    --input: 215 20% 89%;
+    --ring: 214 84% 56%;
 
-    /* Educational gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 45%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 30%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 45%), hsl(142 76% 36%));
+    /* Educational gradients - Motivating and calm */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 46%));
+    --gradient-success: linear-gradient(135deg, hsl(143 64% 24%), hsl(143 64% 20%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 84% 56%) 0%, hsl(200 95% 40%) 50%, hsl(143 64% 24%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(215 20% 98%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(215 30% 97%) 100%);
     
-    /* Shadows - Elevated learning experience */
-    --shadow-sm: 0 1px 2px 0 hsl(220 13% 18% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -1px hsl(220 13% 18% / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -2px hsl(220 13% 18% / 0.05);
-    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.3);
+    /* Shadows - Soft, elevated, modern */
+    --shadow-xs: 0 1px 2px 0 hsl(215 25% 27% / 0.04);
+    --shadow-sm: 0 1px 3px 0 hsl(215 25% 27% / 0.08), 0 1px 2px 0 hsl(215 25% 27% / 0.04);
+    --shadow-md: 0 4px 8px -2px hsl(215 25% 27% / 0.08), 0 2px 4px -1px hsl(215 25% 27% / 0.04);
+    --shadow-lg: 0 12px 16px -4px hsl(215 25% 27% / 0.08), 0 4px 6px -2px hsl(215 25% 27% / 0.04);
+    --shadow-xl: 0 20px 25px -5px hsl(215 25% 27% / 0.1), 0 10px 10px -5px hsl(215 25% 27% / 0.04);
+    --shadow-glow: 0 0 30px hsl(214 84% 56% / 0.15);
+    --shadow-glow-success: 0 0 30px hsl(143 64% 24% / 0.15);
 
     --radius: 0.75rem;
 
@@ -132,6 +148,68 @@ All colors MUST be HSL for consistent theming.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Modern typography hierarchy */
+  h1 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-foreground;
+    line-height: 1.2;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight text-foreground;
+    line-height: 1.3;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-semibold tracking-tight text-foreground;
+    line-height: 1.4;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl font-semibold text-foreground;
+    line-height: 1.5;
+  }
+
+  p {
+    @apply text-base leading-7 text-foreground;
+  }
+
+  /* Focus states for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth transitions */
+  * {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+}
+
+/* Component enhancements */
+@layer components {
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-primary text-primary-foreground shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .btn-success {
+    @apply bg-gradient-success text-success-foreground shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .progress-modern {
+    @apply bg-secondary/50 rounded-full overflow-hidden;
+  }
+
+  .progress-modern .progress-bar {
+    @apply bg-gradient-primary transition-all duration-300 ease-out rounded-full;
   }
 }
